@@ -848,8 +848,8 @@ li {
   transform: none;
   padding: clamp(10px, 1.8svh, 18px) clamp(18px, 4vw, 86px) clamp(14px, 2.8svh, 28px);
   border-top: 1px solid rgba(228, 212, 194, 0.8);
-  background: rgba(255, 253, 248, 0.75);
-  backdrop-filter: blur(10px);
+  background: var(--cream);
+  backdrop-filter: none;
 }
 
 .benefit-strip p {
@@ -876,7 +876,7 @@ li {
   padding: 16px 10px;
   border: 1px solid var(--line);
   border-radius: 10px;
-  background: rgba(255, 253, 248, 0.6);
+  background: var(--cream);
 }
 
 .benefit-grid svg,
@@ -2324,7 +2324,7 @@ details p {
   margin-top: clamp(18px, 3svh, 34px);
   padding-top: clamp(22px, 3svh, 34px);
   padding-bottom: clamp(26px, 4svh, 44px);
-  background: rgba(255, 253, 248, 0.88);
+  background: var(--cream);
 }
 
 .hero-section .benefit-grid article {
@@ -5128,6 +5128,158 @@ body.motion-ready .choice-panel.reveal-item.is-visible {
   .fragment-track,
   .steps {
     width: 100%;
+  }
+}
+
+/* Final text composition pass. */
+:root {
+  --text-measure: 620px;
+  --lead-measure: 720px;
+  --center-measure: 760px;
+}
+
+.hero-copy,
+.text-column,
+.author-copy,
+.quote-copy {
+  max-width: var(--text-measure);
+}
+
+.about-grid .text-column,
+.partners-grid .text-column,
+.author-copy,
+.quote-copy {
+  justify-self: start;
+}
+
+.text-column h2,
+.author-copy h2,
+.partners-grid h2,
+.quote-copy h2 {
+  margin-bottom: clamp(12px, 1.6svh, 18px);
+}
+
+.text-column h3,
+.partners-grid h3 {
+  margin-top: clamp(18px, 3svh, 28px);
+  margin-bottom: clamp(12px, 1.8svh, 18px);
+}
+
+.text-column p,
+.author-copy p:not(.eyebrow),
+.partners-grid p,
+.quote-copy p,
+.text-column li,
+.partners-grid li {
+  max-width: var(--text-measure);
+}
+
+.lead,
+.author-copy .lead,
+.partners-grid .lead,
+.quote-copy .lead {
+  max-width: var(--lead-measure);
+  line-height: 1.5;
+}
+
+.centered-title,
+.fragments-section .centered-title,
+.steps-section .centered-title,
+.faq-section .centered-title {
+  max-width: var(--center-measure);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.benefit-strip p,
+.why-panel .lead {
+  width: min(100%, var(--center-measure));
+  max-width: var(--center-measure);
+  margin-inline: auto;
+}
+
+.why-panel {
+  text-align: center;
+}
+
+.note-card {
+  width: min(100%, 760px);
+  margin-inline: auto;
+  text-align: left;
+}
+
+.faq-list summary {
+  align-items: center;
+}
+
+.faq-list summary,
+.faq-list details p {
+  max-width: 100%;
+}
+
+.faq-list details p {
+  width: min(100%, 820px);
+}
+
+.support-panel,
+.choice-panel,
+.gift-panel,
+.price-panel {
+  text-align: center;
+}
+
+.footer-grid p,
+.footer-grid a {
+  max-width: 420px;
+}
+
+@media (max-width: 900px) {
+  .hero-copy,
+  .text-column,
+  .author-copy,
+  .quote-copy,
+  .text-column p,
+  .author-copy p:not(.eyebrow),
+  .partners-grid p,
+  .quote-copy p,
+  .text-column li,
+  .partners-grid li,
+  .lead,
+  .author-copy .lead,
+  .partners-grid .lead,
+  .quote-copy .lead {
+    max-width: 100%;
+  }
+
+  .note-card {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+  }
+
+  .note-card p {
+    max-width: 560px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .text-column h2,
+  .author-copy h2,
+  .partners-grid h2,
+  .quote-copy h2,
+  .text-column h3,
+  .partners-grid h3 {
+    margin-bottom: 12px;
+  }
+
+  .text-column p,
+  .author-copy p:not(.eyebrow),
+  .partners-grid p,
+  .quote-copy p,
+  .text-column li,
+  .partners-grid li {
+    line-height: 1.55;
   }
 }
 

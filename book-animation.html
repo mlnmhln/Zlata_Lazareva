@@ -19,10 +19,10 @@
 &lt;title&gt;Book Open Close&lt;/title&gt;
 &lt;style&gt;:root {
   color-scheme: light dark;
-  background-color: var(--background) !important;
+  background-color: transparent !important;
 
   /* Agent-facing contract; keep in sync with SKILL.md. */
-  --background: light-dark(rgb(255 255 255), rgb(24 24 24));
+  --background: transparent;
   --foreground: light-dark(rgb(26 28 31), rgb(255 255 255));
   --card: color-mix(in oklab, var(--foreground) 5%, transparent);
   --card-foreground: var(--foreground);
@@ -116,6 +116,11 @@ html &gt; body {
   font-size: var(--font-size-normal);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);
+}
+
+html,
+body {
+  background: transparent !important;
 }
 
 a {
