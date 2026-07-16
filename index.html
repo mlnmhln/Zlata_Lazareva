@@ -3565,12 +3565,12 @@ body {
   --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sans: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --script: "Marck Script", "Segoe Script", "Brush Script MT", cursive;
-  --title-xl: 46px;
-  --title-lg: 37px;
-  --title-md: 23px;
-  --subtitle-size: 19px;
-  --body-size: 17px;
-  --body-small: 15px;
+  --title-xl: 48px;
+  --title-lg: 39px;
+  --title-md: 25px;
+  --subtitle-size: 21px;
+  --body-size: 19px;
+  --body-small: 17px;
 }
 
 html,
@@ -3621,7 +3621,7 @@ h3,
 }
 
 .brand {
-  font-size: 23px;
+  font-size: 25px;
   font-weight: 600;
   line-height: 1.2;
 }
@@ -3636,7 +3636,7 @@ h3,
   align-items: center;
   gap: 0;
   font-family: var(--serif);
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 500;
   line-height: 1.05;
   color: var(--ink);
@@ -3672,9 +3672,13 @@ h3,
 .button-small,
 .choice-buttons .button,
 .price-panel .button {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 600;
   letter-spacing: 0;
+}
+
+.eyebrow {
+  font-size: 19px;
 }
 
 .lead,
@@ -3741,7 +3745,7 @@ h3,
 }
 
 .steps h3 {
-  font-size: 19px;
+  font-size: 21px;
 }
 
 .steps p {
@@ -3807,7 +3811,7 @@ h3,
 .author-copy .eyebrow {
   gap: 8px;
   margin-bottom: 8px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0;
@@ -3863,13 +3867,13 @@ h3,
 }
 
 .faq-list summary {
-  font-size: 21px;
+  font-size: 23px;
   font-weight: 500;
   line-height: 1.35;
 }
 
 .price-panel strong {
-  font-size: 50px;
+  font-size: 52px;
   font-weight: 600;
   line-height: 1;
 }
@@ -3920,7 +3924,7 @@ h3,
 }
 
 .signature {
-  font-size: 33px;
+  font-size: 35px;
   font-weight: 600;
   line-height: 1.3;
   text-align: right;
@@ -4438,7 +4442,10 @@ iframe {
 }
 
 .family-photo img {
-  object-position: center 96%;
+  height: 128%;
+  object-position: center bottom;
+  transform: translateY(-24%);
+  transform-origin: center top;
 }
 
 .choice-panel,
@@ -4981,6 +4988,10 @@ body.motion-ready .choice-panel.reveal-item.is-visible {
   min-height: 230px;
 }
 
+.support-panel .gold-line {
+  margin-inline: auto;
+}
+
 .fragment-track,
 .steps {
   width: min(100%, var(--wide-card-width));
@@ -5109,6 +5120,17 @@ body.motion-ready .choice-panel.reveal-item.is-visible {
   .support-panel {
     min-height: 0;
   }
+
+  .support-section {
+    min-height: 82svh;
+    padding-top: clamp(92px, 15svh, 136px);
+    padding-bottom: clamp(34px, 6svh, 64px);
+  }
+
+  .support-section .support-panel {
+    min-height: min(58svh, 520px);
+    transform: translateY(4svh);
+  }
 }
 
 @media (max-width: 640px) {
@@ -5128,6 +5150,16 @@ body.motion-ready .choice-panel.reveal-item.is-visible {
   .fragment-track,
   .steps {
     width: 100%;
+  }
+
+  .support-section {
+    min-height: 86svh;
+    padding-top: clamp(104px, 18svh, 148px);
+  }
+
+  .support-section .support-panel {
+    min-height: 60svh;
+    transform: translateY(5svh);
   }
 }
 
@@ -5280,6 +5312,212 @@ body.motion-ready .choice-panel.reveal-item.is-visible {
   .text-column li,
   .partners-grid li {
     line-height: 1.55;
+  }
+}
+
+/* Final rhythm pass: one spacing system for every section. */
+:root {
+  --rhythm-xs: 8px;
+  --rhythm-sm: 14px;
+  --rhythm-md: 22px;
+  --rhythm-lg: 34px;
+  --rhythm-xl: clamp(34px, 4vw, 56px);
+  --rhythm-card-pad: clamp(28px, 3.4vw, 44px);
+}
+
+.about-grid,
+.author-grid,
+.partners-grid,
+.family-grid,
+.purchase-grid {
+  gap: var(--rhythm-xl);
+}
+
+.about-grid,
+.author-grid,
+.partners-grid,
+.family-grid,
+.why-panel,
+.faq-list {
+  padding: var(--rhythm-card-pad);
+}
+
+.hero-copy,
+.text-column,
+.author-copy,
+.quote-copy,
+.support-panel > div,
+.site-footer .footer-grid > div,
+.site-footer .footer-grid nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rhythm-sm);
+}
+
+.hero-copy > *,
+.text-column > *,
+.author-copy > *,
+.quote-copy > *,
+.support-panel > div > *,
+.site-footer .footer-grid > div > *,
+.site-footer .footer-grid nav > * {
+  margin-block: 0;
+}
+
+.hero-copy h1,
+.text-column h2,
+.author-copy h2,
+.partners-grid h2,
+.quote-copy h2,
+.why-panel h2,
+.gift-panel h2,
+.support-panel h2 {
+  margin-bottom: 0;
+}
+
+.centered-title,
+.faq-section .centered-title {
+  margin-bottom: var(--rhythm-lg);
+}
+
+.text-column h3,
+.partners-grid h3 {
+  margin-top: var(--rhythm-md);
+  margin-bottom: 0;
+}
+
+.lead {
+  margin-bottom: 0;
+}
+
+.actions {
+  gap: var(--rhythm-sm);
+  margin: var(--rhythm-md) 0 var(--rhythm-sm);
+}
+
+.leaf-list,
+.dot-list {
+  display: grid;
+  gap: var(--rhythm-xs);
+  margin: 0;
+}
+
+.benefit-strip p,
+.fragments-section .centered-title,
+.steps-section .centered-title,
+.faq-section .centered-title {
+  margin-bottom: var(--rhythm-lg);
+}
+
+.benefit-grid,
+.fragment-track,
+.steps,
+.features-row,
+.footer-grid {
+  gap: var(--rhythm-md);
+}
+
+.choice-panel {
+  gap: var(--rhythm-lg);
+}
+
+.choice-buttons {
+  gap: var(--rhythm-md);
+}
+
+.benefit-grid article {
+  gap: var(--rhythm-xs);
+}
+
+.fragment-slider,
+.steps,
+.note-card {
+  margin-top: 0;
+}
+
+.why-panel {
+  display: grid;
+  gap: var(--rhythm-md);
+}
+
+.why-panel h2,
+.why-panel .lead,
+.note-card p {
+  margin-block: 0;
+}
+
+.note-card {
+  gap: var(--rhythm-md);
+}
+
+.support-panel {
+  gap: var(--rhythm-lg);
+  align-items: center;
+}
+
+.support-panel .gold-line {
+  margin-top: 0;
+  margin-bottom: var(--rhythm-sm);
+}
+
+.gift-panel,
+.price-panel {
+  gap: var(--rhythm-md);
+}
+
+.price-panel > *,
+.gift-panel > * {
+  margin-block: 0;
+}
+
+.family-grid {
+  align-items: center;
+}
+
+.faq-list {
+  display: grid;
+  gap: var(--rhythm-sm);
+}
+
+.faq-list details,
+.faq-list summary,
+.faq-list details p {
+  margin-block: 0;
+}
+
+.site-footer .footer-grid {
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --rhythm-xs: 7px;
+    --rhythm-sm: 12px;
+    --rhythm-md: 18px;
+    --rhythm-lg: 26px;
+    --rhythm-xl: 28px;
+    --rhythm-card-pad: clamp(20px, 4.5vw, 30px);
+  }
+
+  .about-grid,
+  .author-grid,
+  .partners-grid,
+  .family-grid,
+  .purchase-grid,
+  .support-panel,
+  .choice-panel,
+  .site-footer .footer-grid {
+    gap: var(--rhythm-md);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --rhythm-sm: 10px;
+    --rhythm-md: 16px;
+    --rhythm-lg: 22px;
+    --rhythm-xl: 22px;
+    --rhythm-card-pad: 18px;
   }
 }
 
@@ -5538,7 +5776,7 @@ body.motion-ready .choice-panel.reveal-item.is-visible {
         </div>
       </section>
 
-      <section class="screen-section compact-section">
+      <section class="screen-section compact-section support-section">
         <div class="section-inner framed support-panel">
           <div>
             <h2>Создано при поддержке</h2>
