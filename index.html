@@ -4921,6 +4921,14 @@ iframe {
   }
 }
 
+@media (min-width: 901px) {
+  .hero-section .hero-author-photo img {
+    right: clamp(-118px, -6vw, -78px);
+    bottom: clamp(-489px, -49svh, -373px);
+    width: min(222.3%, 877px);
+  }
+}
+
 /* Unified card widths and page gutters. */
 :root {
   --site-gutter: clamp(28px, 4.2vw, 72px);
@@ -5655,6 +5663,18 @@ body.motion-ready .faq-list details[open] .faq-answer p {
 
 .buy-choice-section {
   align-items: center !important;
+}
+
+@media (min-width: 901px) {
+  .buy-choice-section .choice-panel,
+  body.motion-ready .buy-choice-section .choice-panel.reveal-item,
+  body.motion-ready .buy-choice-section .choice-panel.reveal-item.is-visible {
+    transform: translateY(-34px) scale(1) !important;
+  }
+
+  .buy-choice-section .choice-panel {
+    margin-bottom: -34px;
+  }
 }
 
 .fragments-section,
