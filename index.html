@@ -5870,9 +5870,84 @@ body.motion-ready .faq-list details[open] .faq-answer p {
     width: min(100%, 280px);
   }
 
+  .hero-copy,
+  .text-column,
+  .author-copy,
+  .quote-copy,
+  .why-panel,
+  .choice-panel,
+  .support-panel,
+  .gift-panel,
+  .price-panel {
+    align-items: center !important;
+    justify-items: center !important;
+    text-align: center !important;
+  }
+
+  .hero-copy > *,
+  .text-column > *,
+  .author-copy > *,
+  .quote-copy > *,
+  .why-panel > *,
+  .choice-panel > *,
+  .support-panel > *,
+  .gift-panel > *,
+  .price-panel > *,
+  .hero-copy p,
+  .text-column p,
+  .author-copy p,
+  .quote-copy p,
+  .why-panel p,
+  .support-panel p,
+  .gift-panel p,
+  .price-panel p {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  .hero-copy h1,
+  .text-column h2,
+  .text-column h3,
+  .author-copy h2,
+  .quote-copy h2,
+  .why-panel h2,
+  .choice-panel h2,
+  .support-panel h2,
+  .gift-panel h2,
+  .price-panel strong,
+  .centered-title {
+    text-align: center !important;
+  }
+
+  .leaf-list,
+  .dot-list {
+    justify-items: center;
+    padding-left: 0;
+  }
+
+  .text-column li,
+  .partners-grid li {
+    text-align: center !important;
+  }
+
+  .actions,
+  .choice-buttons,
+  .features-row,
+  .edition,
+  .author-copy .eyebrow {
+    justify-content: center !important;
+  }
+
+  .faq-list summary,
+  .faq-list details p {
+    text-align: center !important;
+  }
+
   .site-footer .footer-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-    gap: var(--rhythm-lg) var(--rhythm-md) !important;
+    grid-template-columns: minmax(0, 0.86fr) minmax(0, 0.86fr) !important;
+    justify-content: center;
+    gap: var(--rhythm-lg) 14px !important;
     text-align: left;
   }
 
@@ -5884,12 +5959,30 @@ body.motion-ready .faq-list details[open] .faq-answer p {
 
   .site-footer .footer-links {
     grid-column: 1;
-    align-items: start;
+    align-items: center;
+    justify-self: end;
   }
 
   .site-footer .footer-contacts {
     grid-column: 2;
-    align-items: start;
+    align-items: center;
+    justify-self: start;
+  }
+
+  .site-footer .footer-links,
+  .site-footer .footer-contacts {
+    width: min(100%, 230px);
+    min-height: 168px;
+    padding: 18px 14px;
+    border: 1px solid rgba(228, 212, 194, 0.72);
+    border-radius: 14px;
+    background: rgba(255, 253, 248, 0.32);
+    text-align: center;
+  }
+
+  .site-footer .footer-links a,
+  .site-footer .footer-contacts a {
+    text-align: center;
   }
 
   .site-footer .footer-note {
