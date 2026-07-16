@@ -2410,7 +2410,7 @@ details p {
   }
 
   .hero-section .benefit-strip {
-    margin-top: 24px;
+    margin-top: 38px;
     padding: 18px 14px 22px;
   }
 
@@ -4924,7 +4924,7 @@ iframe {
 @media (min-width: 901px) {
   .hero-section .hero-author-photo img {
     right: clamp(-118px, -6vw, -78px);
-    bottom: clamp(-489px, -49svh, -373px);
+    bottom: clamp(-503px, -51svh, -387px);
     width: min(222.3%, 877px);
   }
 }
@@ -5596,15 +5596,15 @@ body.motion-ready .faq-list details[open] .faq-answer p {
   }
 
   .book-animation-shell {
-    width: min(100%, 790px);
-    min-height: clamp(700px, 84svh, 820px);
+    width: min(100%, 540px);
+    min-height: clamp(430px, 58svh, 540px);
     align-self: center;
     justify-self: center;
   }
 
   .book-animation-frame {
     width: 100%;
-    min-height: clamp(700px, 84svh, 820px);
+    min-height: clamp(430px, 58svh, 540px);
     background: transparent !important;
   }
 }
@@ -5620,7 +5620,7 @@ body.motion-ready .faq-list details[open] .faq-answer p {
 @media (max-width: 900px) {
   .book-animation-shell,
   .book-animation-frame {
-    min-height: clamp(440px, 92vw, 620px);
+    min-height: clamp(300px, 70vw, 420px);
   }
 }
 
@@ -5756,6 +5756,24 @@ body.motion-ready .faq-list details[open] .faq-answer p {
   line-height: 1;
 }
 
+.footer-intro {
+  grid-column: 1;
+}
+
+.footer-links {
+  grid-column: 2;
+}
+
+.footer-contacts,
+.footer-note {
+  grid-column: 3;
+}
+
+.footer-note {
+  margin: calc(-1 * var(--rhythm-xs)) 0 0 !important;
+  max-width: 360px;
+}
+
 .about-grid,
 .author-grid,
 .partners-grid,
@@ -5850,6 +5868,41 @@ body.motion-ready .faq-list details[open] .faq-answer p {
 
   .steps p {
     width: min(100%, 280px);
+  }
+
+  .site-footer .footer-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: var(--rhythm-lg) var(--rhythm-md) !important;
+    text-align: left;
+  }
+
+  .site-footer .footer-intro {
+    grid-column: 1 / -1;
+    align-items: center;
+    text-align: center;
+  }
+
+  .site-footer .footer-links {
+    grid-column: 1;
+    align-items: start;
+  }
+
+  .site-footer .footer-contacts {
+    grid-column: 2;
+    align-items: start;
+  }
+
+  .site-footer .footer-note {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(100%, 460px);
+    max-width: 460px;
+    margin: 0 !important;
+    text-align: center;
+  }
+
+  .site-footer .footer-grid h2 {
+    margin-bottom: var(--rhythm-xs) !important;
   }
 }
 
@@ -6154,7 +6207,7 @@ body.motion-ready .faq-list details[open] .faq-answer p {
             <h2>Подарите ребенку историю, в которой герой — он сам</h2>
             <div class="features-row">
               <span><svg><use href="#i-cover"></use></svg>Твердая обложка</span>
-              <span><svg><use href="#i-pages"></use></svg>84 страницы</span>
+              <span><svg><use href="#i-pages"></use></svg>24 страницы</span>
               <span><svg><use href="#i-illustration"></use></svg>Яркие иллюстрации</span>
               <span><svg><use href="#i-heart"></use></svg>Сделано с любовью</span>
             </div>
@@ -6212,11 +6265,11 @@ body.motion-ready .faq-list details[open] .faq-answer p {
 
     <footer class="screen-section site-footer">
       <div class="section-inner footer-grid">
-        <div>
+        <div class="footer-intro">
           <a class="brand footer-brand" href="#home">Злата Лазарева</a>
           <p>«Мишкин день» — книжка-игрушка для семейного чтения, развития речи, воображения и эмоционального интеллекта.</p>
         </div>
-        <nav aria-label="Разделы сайта">
+        <nav class="footer-links" aria-label="Разделы сайта">
           <h2>Разделы сайта</h2>
           <a href="#fragments">Фрагменты</a>
           <a href="#author">Об авторе</a>
@@ -6224,12 +6277,12 @@ body.motion-ready .faq-list details[open] .faq-answer p {
           <a href="#buy">Купить</a>
           <a href="#faq">Частые вопросы</a>
         </nav>
-        <div>
+        <div class="footer-contacts">
           <h2>Контакты</h2>
           <a href="mailto:hello@example.com">hello@example.com</a>
           <a href="tel:+70000000000">+7 000 000-00-00</a>
-          <p>Доставка по России. Для партнерских заказов доступны индивидуальные условия.</p>
         </div>
+        <p class="footer-note">Доставка по России. Для партнерских заказов доступны индивидуальные условия.</p>
       </div>
     </footer>
 
