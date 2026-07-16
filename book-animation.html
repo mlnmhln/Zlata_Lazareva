@@ -756,14 +756,14 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;div id=&quot;book-action-demo&quot; class=&quot;book-demo&quot;&gt;
   &lt;style&gt;
     #book-action-demo {
-      --closed-w: min(86vw, 430px);
+      --closed-w: min(100vw, calc(100vh - 54px), 645px);
       --open-w: var(--closed-w);
       --book-ratio: 0.6818;
       color: var(--foreground);
       display: grid;
       place-items: center;
-      gap: 12px;
-      padding: 12px 0 4px;
+      gap: 10px;
+      padding: 0;
       font-size: var(--font-size-base);
     }
 
@@ -908,6 +908,27 @@ html&gt;body{padding:0}&lt;/style&gt;
       background: color-mix(in srgb, var(--card) 72%, transparent);
     }
 
+    #book-action-demo .book-shadow {
+      display: none;
+    }
+
+    #book-action-demo .spread,
+    #book-action-demo .cover,
+    #book-action-demo .back-page {
+      box-shadow: none;
+    }
+
+    #book-action-demo .cover-wrap,
+    #book-action-demo.is-open .cover-wrap {
+      filter: none;
+    }
+
+    #book-action-demo .hint {
+      border-color: transparent;
+      background: transparent;
+      box-shadow: none;
+    }
+
     #book-action-demo.is-open .stage {
       width: var(--closed-w);
       height: var(--closed-w);
@@ -937,9 +958,24 @@ html&gt;body{padding:0}&lt;/style&gt;
       inset: auto 5% 4% 5%;
     }
 
+    #book-action-demo .book-shadow {
+      display: none !important;
+    }
+
+    #book-action-demo .cover-wrap,
+    #book-action-demo.is-open .cover-wrap {
+      filter: none !important;
+    }
+
+    #book-action-demo .hint {
+      border-color: transparent !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
     @media (max-width: 520px) {
       #book-action-demo {
-        --closed-w: min(88vw, 330px);
+        --closed-w: min(96vw, calc(100vh - 54px), 500px);
         --open-w: var(--closed-w);
         padding-top: 8px;
       }

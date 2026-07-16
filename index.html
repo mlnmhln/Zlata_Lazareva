@@ -3901,7 +3901,7 @@ h3,
   position: absolute;
   right: clamp(-62px, -3.2vw, -34px);
   bottom: clamp(-420px, -41svh, -315px);
-  width: min(156%, 615px);
+  width: min(234%, 923px);
   max-width: none;
   height: auto;
   max-height: none;
@@ -4442,9 +4442,9 @@ iframe {
 }
 
 .family-photo img {
-  height: 128%;
+  height: 124%;
   object-position: center bottom;
-  transform: translateY(-24%);
+  transform: translateY(-16%);
   transform-origin: center top;
 }
 
@@ -5521,6 +5521,205 @@ body.motion-ready .choice-panel.reveal-item.is-visible {
   }
 }
 
+/* Smooth FAQ disclosure animation. */
+.faq-list details {
+  overflow: hidden;
+  transition:
+    border-color 320ms var(--ease-story),
+    background 320ms ease,
+    box-shadow 320ms ease;
+}
+
+.faq-list summary {
+  transition: background 300ms ease;
+}
+
+.faq-list summary:focus {
+  outline: none;
+}
+
+.faq-list summary:focus-visible {
+  outline: 2px solid rgba(111, 132, 90, 0.38);
+  outline-offset: -5px;
+  border-radius: 10px;
+}
+
+.faq-list summary::after {
+  transition:
+    transform 520ms var(--ease-story),
+    opacity 320ms ease;
+  transform-origin: center;
+}
+
+.faq-answer {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    height 560ms var(--ease-story),
+    opacity 420ms ease,
+    transform 560ms var(--ease-story);
+  will-change: height, opacity, transform;
+}
+
+.faq-list details[open] .faq-answer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.faq-list details.is-closing .faq-answer {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.faq-list details.is-closing summary::after {
+  transform: rotate(0deg);
+}
+
+body.motion-ready .faq-list details[open] .faq-answer p {
+  animation: none;
+}
+
+/* Book animation scale and clean transparent stage. */
+@media (min-width: 901px) {
+  .about-grid {
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  }
+
+  .book-animation-shell {
+    width: min(100%, 790px);
+    min-height: clamp(700px, 84svh, 820px);
+    align-self: center;
+    justify-self: center;
+  }
+
+  .book-animation-frame {
+    width: 100%;
+    min-height: clamp(700px, 84svh, 820px);
+    background: transparent !important;
+  }
+}
+
+.spread-placeholder.book-animation-shell,
+.book-animation-shell,
+.book-animation-frame {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 900px) {
+  .book-animation-shell,
+  .book-animation-frame {
+    min-height: clamp(440px, 92vw, 620px);
+  }
+}
+
+/* Hero clearance after enlarging the author image. */
+@media (min-width: 901px) {
+  .hero-section {
+    min-height: clamp(980px, 135svh, 1240px);
+    padding-top: clamp(158px, 12vw, 196px);
+  }
+
+  .hero-section .hero-grid {
+    min-height: clamp(640px, 82svh, 820px);
+    align-items: center;
+  }
+}
+
+/* Section rhythm correction: remove accidental full-screen voids. */
+:root {
+  --section-y: clamp(50px, 6svh, 78px);
+  --section-y-tight: clamp(24px, 3svh, 42px);
+}
+
+.screen-section:not(.hero-section):not(.site-footer) {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  padding-top: var(--section-y) !important;
+  padding-bottom: var(--section-y) !important;
+  align-items: center;
+  overflow: visible;
+}
+
+.buy-choice-section,
+.support-section {
+  padding-top: var(--section-y-tight) !important;
+  padding-bottom: var(--section-y-tight) !important;
+}
+
+.fragments-section,
+.steps-section,
+.faq-section {
+  padding-top: var(--section-y) !important;
+  padding-bottom: var(--section-y) !important;
+}
+
+.steps-section .section-inner,
+.fragments-section .section-inner,
+.faq-section .section-inner {
+  display: grid;
+  gap: var(--rhythm-lg);
+  align-content: start;
+}
+
+.steps-section .centered-title,
+.fragments-section .centered-title,
+.faq-section .centered-title {
+  margin-bottom: 0;
+}
+
+.steps,
+.fragment-track,
+.faq-list {
+  margin-top: 0 !important;
+}
+
+.about-grid,
+.author-grid,
+.partners-grid,
+.purchase-grid,
+.family-grid,
+.why-panel {
+  min-height: auto !important;
+}
+
+.partner-visual,
+.purchase-book,
+.gift-panel,
+.price-panel {
+  min-height: auto !important;
+}
+
+.purchase-grid {
+  align-items: stretch;
+}
+
+.gift-panel,
+.price-panel {
+  align-content: center;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --section-y: clamp(34px, 7vw, 54px);
+    --section-y-tight: clamp(22px, 5vw, 34px);
+  }
+
+  .support-section {
+    min-height: auto !important;
+    transform: none !important;
+  }
+
+  .support-section .support-panel {
+    min-height: auto !important;
+    transform: none !important;
+  }
+}
+
     </style>
   </head>
   <body>
@@ -6046,17 +6245,78 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-document.querySelectorAll(".faq-list details").forEach((details) => {
-  details.addEventListener("toggle", () => {
-    if (!details.open) {
-      return;
-    }
+const faqItems = Array.from(document.querySelectorAll(".faq-list details"));
 
-    document.querySelectorAll(".faq-list details").forEach((item) => {
-      if (item !== details) {
-        item.removeAttribute("open");
-      }
-    });
+const setFaqAnswerHeight = (details, height) => {
+  const answer = details.querySelector(".faq-answer");
+  if (answer) {
+    answer.style.height = height;
+  }
+};
+
+const closeFaqItem = (details) => {
+  const answer = details.querySelector(".faq-answer");
+  if (!answer || !details.open || details.dataset.animating === "true") {
+    return;
+  }
+
+  details.dataset.animating = "true";
+  details.classList.add("is-closing");
+  answer.style.height = `${answer.scrollHeight}px`;
+  answer.offsetHeight;
+  answer.style.height = "0px";
+
+  window.setTimeout(() => {
+    details.removeAttribute("open");
+    details.classList.remove("is-closing");
+    details.dataset.animating = "false";
+  }, 560);
+};
+
+const openFaqItem = (details) => {
+  const answer = details.querySelector(".faq-answer");
+  if (!answer || details.open || details.dataset.animating === "true") {
+    return;
+  }
+
+  faqItems.forEach((item) => {
+    if (item !== details) {
+      closeFaqItem(item);
+    }
+  });
+
+  details.dataset.animating = "true";
+  details.classList.remove("is-closing");
+  details.setAttribute("open", "");
+  answer.style.height = "0px";
+  answer.offsetHeight;
+  answer.style.height = `${answer.scrollHeight}px`;
+
+  window.setTimeout(() => {
+    answer.style.height = "auto";
+    details.dataset.animating = "false";
+  }, 560);
+};
+
+faqItems.forEach((details) => {
+  const summary = details.querySelector("summary");
+  const answer = document.createElement("div");
+  answer.className = "faq-answer";
+  Array.from(details.children)
+    .filter((child) => child !== summary)
+    .forEach((child) => answer.appendChild(child));
+  details.appendChild(answer);
+
+  setFaqAnswerHeight(details, details.open ? "auto" : "0px");
+
+  summary?.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    if (details.open) {
+      closeFaqItem(details);
+    } else {
+      openFaqItem(details);
+    }
   });
 });
 
