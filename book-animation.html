@@ -205,7 +205,7 @@ code:not(pre code) {
   border-radius: var(--radius-2xl);
   corner-shape: superellipse(1.5);
   color: var(--card-foreground);
-  background: var(--card);
+  background: transparent;
 }
 
 #widget &gt; :not(.card) {
@@ -757,7 +757,7 @@ html&gt;body{padding:0}&lt;/style&gt;
   &lt;style&gt;
     #book-action-demo {
       --closed-w: min(100vw, calc(100vh - 54px), 430px);
-      --open-w: var(--closed-w);
+      --open-w: min(100vw, 620px);
       --book-ratio: 0.6818;
       color: var(--foreground);
       display: grid;
@@ -788,8 +788,13 @@ html&gt;body{padding:0}&lt;/style&gt;
       position: relative;
       cursor: pointer;
       transform-style: preserve-3d;
-      outline-offset: 6px;
+      outline: none;
       transition: transform 820ms cubic-bezier(.2,.72,.14,1);
+    }
+
+    #book-action-demo .book-button:focus,
+    #book-action-demo .book-button:focus-visible {
+      outline: none;
     }
 
     #book-action-demo .book-shadow {
@@ -810,7 +815,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       position: absolute;
       overflow: hidden;
       box-shadow: 0 16px 38px color-mix(in srgb, var(--foreground) 22%, transparent);
-      background: var(--card);
+      background: transparent;
     }
 
     #book-action-demo .spread {
@@ -829,6 +834,11 @@ html&gt;body{padding:0}&lt;/style&gt;
       object-fit: cover;
       user-select: none;
       -webkit-user-drag: none;
+    }
+
+    #book-action-demo .spread img {
+      object-fit: contain;
+      background: transparent;
     }
 
     #book-action-demo .back-page {
@@ -930,12 +940,12 @@ html&gt;body{padding:0}&lt;/style&gt;
     }
 
     #book-action-demo.is-open .stage {
-      width: var(--closed-w);
-      height: var(--closed-w);
+      width: var(--open-w);
+      height: min(51.3vw, 318px);
     }
 
     #book-action-demo.is-open .spread {
-      inset: 4.5%;
+      inset: 0;
       opacity: 1;
       transform: translateZ(0) scale(1);
       transition-delay: 170ms, 0ms;
@@ -977,30 +987,34 @@ html&gt;body{padding:0}&lt;/style&gt;
     @media (max-width: 520px) {
       #book-action-demo {
         --closed-w: min(92vw, calc(100vh - 54px), 330px);
-        --open-w: var(--closed-w);
+        --open-w: min(100vw, 380px);
         padding-top: 8px;
       }
       #book-action-demo .book-button {
         transform: scale(.96);
       }
+      #book-action-demo.is-open .stage {
+        width: var(--open-w);
+        height: min(51.3vw, 220px);
+      }
       #book-action-demo.is-open .spread {
-        inset: 8%;
+        inset: 0;
       }
     }
   &lt;/style&gt;
 
   &lt;div class=&quot;stage&quot;&gt;
-    &lt;button class=&quot;book-button&quot; type=&quot;button&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Открыть книжку&quot;&gt;
+    &lt;button class=&quot;book-button&quot; type=&quot;button&quot; aria-pressed=&quot;false&quot; aria-label=&quot;&#1054;&#1090;&#1082;&#1088;&#1099;&#1090;&#1100; &#1082;&#1085;&#1080;&#1078;&#1082;&#1091;&quot;&gt;
       &lt;span class=&quot;book-shadow&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
-      &lt;span class=&quot;spread&quot; aria-hidden=&quot;true&quot;&gt;&lt;img src=&quot;assets/images/image-2.2.webp&quot; alt=&quot;Фрагмент книги Мишкин день&quot;&gt;&lt;/span&gt;
+      &lt;span class=&quot;spread&quot; aria-hidden=&quot;true&quot;&gt;&lt;img src=&quot;assets/images/image-2.2.webp&quot; alt=&quot;&quot;&gt;&lt;/span&gt;
       &lt;span class=&quot;back-page&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
       &lt;span class=&quot;cover-wrap&quot; aria-hidden=&quot;true&quot;&gt;
-        &lt;span class=&quot;cover front&quot;&gt;&lt;img src=&quot;assets/images/image-2.1.jpg&quot; alt=&quot;Обложка книги Мишкин день&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;cover front&quot;&gt;&lt;img src=&quot;assets/images/image-2.1.jpg&quot; alt=&quot;&quot;&gt;&lt;/span&gt;
         &lt;span class=&quot;cover back&quot;&gt;&lt;/span&gt;
       &lt;/span&gt;
     &lt;/button&gt;
   &lt;/div&gt;
-  &lt;div class=&quot;hint&quot; aria-live=&quot;polite&quot;&gt;Нажми на книжку, чтобы открыть&lt;/div&gt;
+  &lt;div class=&quot;hint&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
 
   &lt;script&gt;
     (() =&gt; {
@@ -1010,8 +1024,8 @@ html&gt;body{padding:0}&lt;/style&gt;
       const setOpen = (open) =&gt; {
         root.classList.toggle(&#x27;is-open&#x27;, open);
         button.setAttribute(&#x27;aria-pressed&#x27;, String(open));
-        button.setAttribute(&#x27;aria-label&#x27;, open ? &#x27;Закрыть книжку&#x27; : &#x27;Открыть книжку&#x27;);
-        hint.textContent = open ? &#x27;Нажми еще раз, чтобы закрыть&#x27; : &#x27;Нажми на книжку, чтобы открыть&#x27;;
+        button.setAttribute(&#x27;aria-label&#x27;, open ? &#x27;\u0417\u0430\u043a\u0440\u044b\u0442\u044c \u043a\u043d\u0438\u0436\u043a\u0443&#x27; : &#x27;\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u043a\u043d\u0438\u0436\u043a\u0443&#x27;);
+        hint.textContent = open ? &#x27;\u041d\u0430\u0436\u043c\u0438 \u0435\u0449\u0435 \u0440\u0430\u0437, \u0447\u0442\u043e\u0431\u044b \u0437\u0430\u043a\u0440\u044b\u0442\u044c&#x27; : &#x27;\u041d\u0430\u0436\u043c\u0438 \u043d\u0430 \u043a\u043d\u0438\u0436\u043a\u0443, \u0447\u0442\u043e\u0431\u044b \u043e\u0442\u043a\u0440\u044b\u0442\u044c&#x27;;
       };
       button.addEventListener(&#x27;click&#x27;, () =&gt; setOpen(!root.classList.contains(&#x27;is-open&#x27;)));
       setOpen(false);
