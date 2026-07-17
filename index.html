@@ -5837,6 +5837,25 @@ body.motion-ready .faq-list details[open] .faq-answer p {
   align-content: center;
 }
 
+.family-photo {
+  position: relative !important;
+  display: block !important;
+  padding: 0 !important;
+  background: transparent !important;
+  line-height: 0;
+}
+
+.family-photo img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: cover !important;
+  object-position: center 68% !important;
+  transform: none !important;
+}
+
 @media (max-width: 900px) {
   :root {
     --section-y: clamp(34px, 7vw, 54px);
@@ -5922,13 +5941,35 @@ body.motion-ready .faq-list details[open] .faq-answer p {
 
   .leaf-list,
   .dot-list {
-    justify-items: center;
+    justify-items: stretch;
+    width: fit-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     padding-left: 0;
   }
 
   .text-column li,
   .partners-grid li {
-    text-align: center !important;
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: start;
+    padding-left: 0 !important;
+    text-align: left !important;
+  }
+
+  .text-column li::before,
+  .partners-grid li::before {
+    position: static !important;
+    grid-column: 1;
+    justify-self: center;
+    margin-top: 0.5em;
+  }
+
+  .text-column li > *,
+  .partners-grid li > * {
+    grid-column: 2;
   }
 
   .actions,
@@ -5942,6 +5983,41 @@ body.motion-ready .faq-list details[open] .faq-answer p {
   .faq-list summary,
   .faq-list details p {
     text-align: center !important;
+  }
+
+  .faq-list,
+  .faq-list details,
+  .faq-list summary,
+  .faq-answer,
+  .faq-list details p {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .faq-list summary {
+    grid-template-columns: 28px minmax(0, 1fr) 18px !important;
+    gap: 8px !important;
+    padding-inline: 12px !important;
+  }
+
+  .faq-list summary span {
+    text-align: center !important;
+  }
+
+  .faq-answer {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 14px;
+  }
+
+  .faq-list details p {
+    box-sizing: border-box;
+    width: 100% !important;
+    margin: 0 auto 16px !important;
+    padding: 0 !important;
+    line-height: 1.5;
   }
 
   .site-footer .footer-grid {
